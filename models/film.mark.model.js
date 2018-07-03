@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 
 var filmMarkSchema = mongoose.Schema({
     _id: Number,
-    favorite: Boolean
+    mark: Boolean
 });
 
-var filmMarkModel = mongoose.model('FilmFavorite', filmMarkSchema);
+var filmMarkModel = mongoose.model('FilmMark', filmMarkSchema);
 
 module.exports = filmMarkModel;
