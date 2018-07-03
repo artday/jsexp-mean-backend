@@ -4,9 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var filmsRouter = require('./routes/films');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://film_app_admin:xuH39cBJAqgSF8fp@ds125241.mlab.com:25241/film_app_db');
@@ -22,9 +24,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/films', filmsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
